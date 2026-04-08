@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(my_bot)
+project(GantBot)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -36,5 +36,6 @@ install(
   DIRECTORY config description launch worlds
   DESTINATION share/${PROJECT_NAME}
 )
-
+# add this to add a Node
+install(PROGRAMS  scripts/joint_bridge.py DESTINATION lib/${PROJECT_NAME}) 
 ament_package()
