@@ -42,7 +42,7 @@ def generate_launch_description():
     )
     bridge = Node(
         package='GantBot',
-        executable='joint_bridge',
+        executable='joint_bridge.py',
         output='screen',
         parameters=[{'use_sim_time': True}] # add other parameters here if required
     )

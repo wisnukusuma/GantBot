@@ -24,9 +24,6 @@
         <material>Gazebo/Orange</material>
     </gazebo>
 
-
-
-
     <!-- Gazebo requires the use of plugins to interact with other systems such as ROS. -->
 
     <ros2_control name="GantrySystem" type="system">
