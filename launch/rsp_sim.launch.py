@@ -40,15 +40,10 @@ def generate_launch_description():
         executable='spawner',
         arguments=['gantry_controller'],
     )
-    bridge = Node(
-        package='GantBot',
-        executable='joint_bridge.py',
-        output='screen',
-        parameters=[{'use_sim_time': True}] # add other parameters here if required
-    )
+    
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
+            get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py'])
         )
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                     arguments=['-topic', 'robot_description',
@@ -59,7 +54,6 @@ def generate_launch_description():
         gazebo,
         node_robot_state_publisher,
         spawn_entity,
-        bridge,
         joint_state_broadcaster_spawner,
         gantry_controller_spawner
     ])
