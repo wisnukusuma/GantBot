@@ -9,7 +9,8 @@
     <joint name="base_joint" type="fixed">
         <origin xyz="1.5 1.0 0" rpy="0 0 0"/>
         <parent link="world"/>
-        <child link="base_link"/>        
+        <child link="base_link"/> 
+        <dynamics damping="1000000" friction="10000000"/>       
     </joint>
     <!-- base_link is a large rectangular plate. Some things to note: -->
     <!-- - We set the visual origin Z to half the box height, so that the link origin sits at the bottom of the box -->
@@ -28,21 +29,17 @@
         </visual>
         <collision>
             <origin xyz="0 0 0.05" rpy="0 0 0"/>
-            <geometry>
-                <box size="0 0 0" />
-            </geometry>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="10" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="10" x="5" y="5" z="0.1">
+            <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
     
     <joint name="pilar1_joint" type="fixed">
         <origin xyz="2.375 2.375 0.1" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="pilar1_link"/>
+        <dynamics damping="1000000" friction="10000000"/>   
     </joint>
 
     <link name="pilar1_link">
@@ -56,22 +53,18 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 0.25 2" />
-            </geometry>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="3" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
 
     <joint name="pilar2_joint" type="fixed">
         <origin xyz="-2.375 2.375 0.1" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="pilar2_link"/>
+        <dynamics damping="1000000" friction="10000000"/>   
     </joint>
 
     <link name="pilar2_link">
@@ -85,51 +78,43 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 0.25 2" />
-            </geometry>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="3" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
       
      <joint name="pilar3_joint" type="fixed">
         <origin xyz="2.375 -2.375 0.1" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="pilar3_link"/>
+        <dynamics damping="1000000" friction="10000000"/>   
     </joint>
 
     <link name="pilar3_link">
         <visual>
             <origin xyz="0 0 1" rpy="0 0 0"/>
             <geometry>
-                <box size="0.25 0.25 2" />
+
             </geometry>
             <material name="green">
                 <color rgba="0.2 1 0.2 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 0.25 2" />
-            </geometry>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="3" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
 
     <joint name="pilar4_joint" type="fixed">
         <origin xyz="-2.375 -2.375 0.1" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="pilar4_link"/>
+        <dynamics damping="1000000" friction="10000000"/>   
     </joint>
 
     <link name="pilar4_link">
@@ -143,22 +128,18 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 0.25 2" />
-            </geometry>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="3" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
 
     <joint name="edge1_joint" type="fixed">
         <origin xyz="0 -2.375 2.125" rpy="0 0 0"/>
         <parent link="pilar1_link"/>
         <child link="edge1_link"/>
+        <dynamics damping="1000000" friction="10000000"/>   
     </joint>
 
     <link name="edge1_link">
@@ -173,21 +154,17 @@
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 2 0.25" />
-            </geometry>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="3" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="1" x="0.5" y="0.25" z="0.15">
+            <origin xyz="0 0 0.075" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
      
      <joint name="edge2_joint" type="fixed">
         <origin xyz="0 -2.375 2.125" rpy="0 0 0"/>
         <parent link="pilar2_link"/>
         <child link="edge2_link"/>
+        <dynamics damping="1000000" friction="10000000"/>   
     </joint>
 
     <link name="edge2_link">
@@ -202,15 +179,10 @@
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 2 0.25" />
-            </geometry>
         </collision>
-        <inertial>
+        <xacro:inertial_box mass="1" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="3" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        </xacro:inertial_box>
     </link>
     
     <joint name="y_joint" type="prismatic">
@@ -233,16 +205,11 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="4.5 0.25 0.25" />
-            </geometry>
+            <origin xyz="2.25 0 0" rpy="0 0 0"/>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="2" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="0.5" x="0.5" y="0.25" z="0.15">
+            <origin xyz="2.25 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
 
     <joint name="x_joint" type="prismatic">
@@ -265,16 +232,11 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 0.25 1.5" />
-            </geometry>
+            <origin xyz="0 0 -0.6" rpy="0 0 0"/>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="0.5" x="0.5" y="0.25" z="0.15">
+            <origin xyz="0 0 -0.6" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
 
     <joint name="z_joint" type="prismatic">
@@ -295,16 +257,11 @@
             <material name="orange"/>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.25 0.25 0.4" />
-            </geometry>
+            <origin xyz="0 0 -0.6" rpy="0 0 0"/>
         </collision>
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="0.5" />
-            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0.0" izz="0.01" />
-        </inertial>
+        <xacro:inertial_box mass="0.2" x="0.5" y="0.25" z="0.15">
+            <origin xyz="0 0 -0.6" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
 
 </robot>
