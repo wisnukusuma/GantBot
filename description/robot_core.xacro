@@ -29,6 +29,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 0.05" rpy="0 0 0"/>
+            <geometry>
+                <box size="5 5 0.1" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="10" x="5" y="5" z="0.1">
             <origin xyz="0 0 0.05" rpy="0 0 0"/>
@@ -54,6 +57,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 0.25 2" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 1" rpy="0 0 0"/>
@@ -79,6 +85,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 0.25 2" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 1" rpy="0 0 0"/>
@@ -96,7 +105,7 @@
         <visual>
             <origin xyz="0 0 1" rpy="0 0 0"/>
             <geometry>
-
+                <box size="0.25 0.25 2" />
             </geometry>
             <material name="green">
                 <color rgba="0.2 1 0.2 1"/>
@@ -104,6 +113,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 0.25 2" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 1" rpy="0 0 0"/>
@@ -129,6 +141,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 0.25 2" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="2" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 1" rpy="0 0 0"/>
@@ -154,6 +169,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 5 0.25" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="1" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 0.075" rpy="0 0 0"/>
@@ -179,6 +197,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 5 0.25" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="1" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -206,6 +227,9 @@
         </visual>
         <collision>
             <origin xyz="2.25 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="4.5 0.25 0.25" />
+            </geometry> 
         </collision>
         <xacro:inertial_box mass="0.5" x="0.5" y="0.25" z="0.15">
             <origin xyz="2.25 0 0" rpy="0 0 0"/>
@@ -233,6 +257,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 -0.6" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 0.25 1.75" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="0.5" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 -0.6" rpy="0 0 0"/>
@@ -258,6 +285,9 @@
         </visual>
         <collision>
             <origin xyz="0 0 -0.6" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.25 0.25 0.4" />
+            </geometry>
         </collision>
         <xacro:inertial_box mass="0.2" x="0.5" y="0.25" z="0.15">
             <origin xyz="0 0 -0.6" rpy="0 0 0"/>

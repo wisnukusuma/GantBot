@@ -3,7 +3,10 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-
+from launch_ros.actions import Node
+from launch.substitutions import PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
+from launch.actions import TimerAction
 
 from launch_ros.actions import Node
 import xacro
@@ -16,7 +19,7 @@ def generate_launch_description():
     file_subpath = 'description/robot.urdf.xacro'
     # Use xacro to process the file
     xacro_file = os.path.join(get_package_share_directory(pkg_name),file_subpath)
-    robot_description_raw = xacro.process_file(xacro_file).toxml()
+    robot_description = xacro.process_file(xacro_file).toxml()
     # Configure the node
     
     
@@ -24,7 +27,7 @@ def generate_launch_description():
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='screen',
-        parameters=[{'robot_description': robot_description_raw,
+        parameters=[{'robot_description': robot_description,
         'use_sim_time': True}] # add other parameters here if required
     )
 
@@ -35,10 +38,18 @@ def generate_launch_description():
     )
     controller_params_file = os.path.join(get_package_share_directory(pkg_name),'config','gantry_controller.yaml')
 
+    
     gantry_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
         arguments=['gantry_controller'],
+    )
+    delayed_spawners = TimerAction(
+    period=3.0,   # 2–5 seconds is safe
+    actions=[
+        joint_state_broadcaster_spawner,
+        gantry_controller_spawner
+    ]
     )
     
     gazebo = IncludeLaunchDescription(
@@ -56,7 +67,6 @@ def generate_launch_description():
         gazebo,
         node_robot_state_publisher,
         spawn_entity,
-        joint_state_broadcaster_spawner,
-        gantry_controller_spawner
+        delayed_spawners
     ])
 
