@@ -69,4 +69,3 @@ def generate_launch_description():
         spawn_entity,
         delayed_spawners
     ])
-

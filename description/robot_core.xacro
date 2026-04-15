@@ -1,22 +1,14 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot"> 
-    
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="GantBot"> 
     <xacro:include filename="example_include.xacro" />
     <xacro:include filename="example_gazebo.xacro" />
     <link name="world"></link>
-    <!-- A simple fixed joint from our empty world link, to our base. -->
-    <!-- The base origin is offset from the world origin. -->
     <joint name="base_joint" type="fixed">
         <origin xyz="1.5 1.0 0" rpy="0 0 0"/>
         <parent link="world"/>
         <child link="base_link"/> 
         <dynamics damping="1000000" friction="10000000"/>       
     </joint>
-    <!-- base_link is a large rectangular plate. Some things to note: -->
-    <!-- - We set the visual origin Z to half the box height, so that the link origin sits at the bottom of the box -->
-    <!-- - We set the collision to be identical to the visual -->
-    <!-- - We specified the colour manually (but still need to enter a name) -->
-    <!-- - We specified all the inertial parameters manually -->
     <link name="base_link">
         <visual>
             <origin xyz="0 0 0.05" rpy="0 0 0"/>
@@ -286,7 +278,7 @@
         <collision>
             <origin xyz="0 0 -0.6" rpy="0 0 0"/>
             <geometry>
-                <box size="0.25 0.25 0.4" />
+                <box size="0.25 0.25 0.4"/>
             </geometry>
         </collision>
         <xacro:inertial_box mass="0.2" x="0.5" y="0.25" z="0.15">
