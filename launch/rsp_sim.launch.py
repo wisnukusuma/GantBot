@@ -7,7 +7,7 @@ from launch_ros.actions import Node
 from launch.substitutions import PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 from launch.actions import TimerAction
-from launch.event_handlers import OnProcessExit
+from launch.event_handlers import OnProcessExit, OnProcessStart
 from launch_ros.actions import Node
 import xacro
 
@@ -31,6 +31,7 @@ def generate_launch_description():
         'use_sim_time': True}] # add other parameters here if required
     )
 
+
     joint_state_broadcaster_spawner = Node(
         package='controller_manager',
         executable='spawner',
@@ -43,7 +44,7 @@ def generate_launch_description():
         arguments=['gantry_controller'],
     )
     delayed_spawners = TimerAction(
-    period=3.0,   # 2–5 seconds is safe
+    period=12.0,   # 2–5 seconds is safe
     actions=[
         joint_state_broadcaster_spawner,
         gantry_controller_spawner
@@ -55,15 +56,25 @@ def generate_launch_description():
             get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
         launch_arguments={'world': 'empty_world', 'verbose': 'true'}.items()
         )
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                    arguments=['-topic', 'robot_description',
-                                '-entity', 'GantBot'],
-                    output='screen',
-                    parameters=[{'robot_description_topic': 'robot_description'}])
+    
+    spawn_entity = Node(
+    package='gazebo_ros',
+    executable='spawn_entity.py',
+    arguments=[
+        '-topic', 'robot_description',
+        '-entity', 'GantBot'
+    ],
+    output='screen'
+    )
+    
+    delayed_spawn = TimerAction(
+    period=9.0,
+    actions=[spawn_entity]
+    )
     # Run the node
     return LaunchDescription([
-        gazebo,
-        node_robot_state_publisher,
-        spawn_entity,
-        delayed_spawners
+    gazebo,
+    node_robot_state_publisher,
+    delayed_spawn,
+    delayed_spawners
     ])

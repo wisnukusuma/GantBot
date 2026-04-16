@@ -55,7 +55,8 @@
     </ros2_control>
     <gazebo>
         <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-            <parameters>$(find GantBot)/config/gantry_controller.yaml</parameters>
+            <!-- change to your absolute path to avoid unconsistent launching-->
+            <parameters>/home/wisnu/dev_ws/src/GantBot/config/gantry_controller.yaml</parameters>
         </plugin>
     </gazebo>
 </robot>
