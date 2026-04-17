@@ -7,8 +7,17 @@ Presequite :
 Robot Model:
 ![Gazebo (Ubuntu-22 04) 2026-04-14 16-17-02](https://github.com/user-attachments/assets/6ade5d47-6a3b-473f-83a5-0377da472f0e)
 
-
-Test move the robot move to (0.2 , 0 , 0.1) :
+build and source the setup file :
+```
+cd ~/[$your_development_workspace]
+colcon build --symlink-install
+source install/setup.bash
+```
+summon the robot and spawn into Gazebo:
+```
+ros2 launch GantBot rsp_sim.launch.py
+```
+open another terminal to test move the robot move to (0.2 , 0 , 0.1) :
 ```
 ros2 topic pub /gantry_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory "{
   joint_names: ['x_joint', 'y_joint', 'z_joint'],
